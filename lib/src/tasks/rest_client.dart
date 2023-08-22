@@ -36,7 +36,7 @@ class RestClient {
     if (config == null) {
       throw "SDK Initilization failed, Please setup Config!";
     }
-    final response = await _getHttpResepose(
+    final response = await _getHttpResponse(
       file,
       auth,
       customMetadata,
@@ -55,7 +55,7 @@ class RestClient {
     }
   }
 
-  Future<HttpClientResponse> _getHttpResepose(
+  Future<HttpClientResponse> _getHttpResponse(
     File file,
     AuthEndpointRespose authResponse,
     Map<String, dynamic> customMetadata,
