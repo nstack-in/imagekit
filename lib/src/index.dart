@@ -49,6 +49,7 @@ class ImageKit {
     String? bearerToken,
     AuthEndpointRespose? auth,
     String? fileName,
+    String? folderPath,
   }) async {
     final auth = await getToken(
       bearerToken: bearerToken,
@@ -60,6 +61,7 @@ class ImageKit {
       auth: auth,
       customMetadata: customMetadata,
       fileName: fileName,
+      folderPath: folderPath,
     );
   }
 
@@ -71,6 +73,7 @@ class ImageKit {
     List<String> tags = const [],
     Map<String, dynamic> customMetadata = const {},
     String? fileName,
+    String? folderPath,
   }) async {
     final config = this.config;
     if (config == null) {
@@ -84,6 +87,7 @@ class ImageKit {
       tags: tags,
       customMetadata: customMetadata,
       fileName: fileName ?? name,
+      folderPath: folderPath,
     );
   }
 

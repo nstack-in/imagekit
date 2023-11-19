@@ -30,18 +30,20 @@ class RestClient {
     Map<String, dynamic> customMetadata = const {},
     Map<String, String> headers = const {},
     required String fileName,
+    String? folderPath,
   }) async {
     final config = imageKit.config;
     if (config == null) {
       throw "SDK Initilization failed, Please setup Config!";
     }
-    final response = await _getHttpResepose(
+    final response = await _getHttpResponse(
       file,
       auth,
       customMetadata,
       tags,
       config,
       fileName,
+      folderPath,
     );
     final statusCode = response.statusCode;
     final data = await _readResponseAsString(response);
@@ -53,13 +55,14 @@ class RestClient {
     }
   }
 
-  Future<HttpClientResponse> _getHttpResepose(
+  Future<HttpClientResponse> _getHttpResponse(
     File file,
     AuthEndpointRespose authResponse,
     Map<String, dynamic> customMetadata,
     List<String> tags,
     Configuration config,
     String fileName,
+    String? folderPath,
   ) async {
     final httpClient = _getHttpClient();
     final request = await httpClient.postUrl(Uri.parse(uploadBaseUrl));
@@ -70,6 +73,9 @@ class RestClient {
     final multipart = await http.MultipartFile.fromPath("file", file.path);
     requestMultipart.files.add(multipart);
     requestMultipart.fields["fileName"] = fileName;
+    if (folderPath != null && folderPath.isNotEmpty) {
+      requestMultipart.fields["folder"] = folderPath;
+    }
     if (tags.isNotEmpty) {
       requestMultipart.fields["tags"] = tags.join(',');
     }

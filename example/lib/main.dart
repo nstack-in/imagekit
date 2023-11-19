@@ -68,11 +68,8 @@ class _HomePageState extends State<HomePage> {
     const tags = ['rose', 'flower'];
     const bearerToken =
         'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiVVNFUiIsIklzc3VlciI6Ik5TVEFDSyBJTkRJQSIsIlVzZXJuYW1lIjoieXQubnN0YWNrQGdtYWlsLmNvbSIsImV4cCI6MTY3MjcyNzU4NSwiaWF0IjoxNjcyNzI3NTg1fQ.vOVKKT-U8f6M4jU1kCb_zT1XFpFDvqeGQHUN_PtHVLQ';
-    final image = await imagekit.upload(
-      selectedFile,
-      tags: tags,
-      bearerToken: bearerToken,
-    );
+    final image = await imagekit.upload(selectedFile,
+        tags: tags, bearerToken: bearerToken, folderPath: '/images/folder/');
     // File Id: image.fileId
     // Thumbnail Url: image.thumbnailUrl
     // Image Url: image.filePath
