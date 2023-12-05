@@ -7,9 +7,9 @@ class ImageKitResponse {
     required this.filePath,
     required this.url,
     required this.fileType,
-    required this.height,
-    required this.width,
-    required this.thumbnailUrl,
+    this.height,
+    this.width,
+    this.thumbnailUrl,
     required this.aiTags,
   });
 
@@ -20,9 +20,9 @@ class ImageKitResponse {
   final String filePath;
   final String url;
   final String fileType;
-  final int height;
-  final int width;
-  final String thumbnailUrl;
+  final int? height;
+  final int? width;
+  final String? thumbnailUrl;
   final dynamic aiTags;
 
   factory ImageKitResponse.fromJson(Map<String, dynamic> json) {
